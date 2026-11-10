@@ -1,0 +1,31 @@
+# Local services for CreditLens AI. Start with: docker compose -f infra/docker-compose.yml up -d
+# Milestone 2 needs only SQL Server. Langfuse, MLflow and Qdrant are added in later milestones.
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: creditlens-sqlserver
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: "Developer"          # free, development and test use only
+      MSSQL_SA_PASSWORD: "YourStrong!Passw0rd"   # change it, and match DATABASE_URL in .env
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqlserver-data:/var/opt/mssql
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P \"$$MSSQL_SA_PASSWORD\" -C -Q 'SELECT 1' || exit 1"]
+      interval: 10s
+      retries: 10
+
+  sqlserver-init:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    depends_on:
+      sqlserver:
+        condition: service_healthy
+    environment:
+      MSSQL_SA_PASSWORD: "YourStrong!Passw0rd"
+    entrypoint: ["/bin/bash", "-c", "/opt/mssql-tools18/bin/sqlcmd -S sqlserver -U sa -P \"$$MSSQL_SA_PASSWORD\" -C -Q \"IF DB_ID('creditlens') IS NULL CREATE DATABASE creditlens\""]
+    restart: "no"
+
+volumes:
+  sqlserver-data:

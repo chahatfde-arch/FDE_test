@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "creditlens"
+version = "0.1.0"
+description = "CreditLens AI: draft credit memos for SME loan applications, with a human underwriter in the loop"
+requires-python = ">=3.10"
+dependencies = [
+  "numpy>=1.26",
+  "pandas>=2.1",
+  "pandera>=0.20",
+  "faker>=24",
+  "reportlab>=4.0",
+  "matplotlib>=3.8",
+  "pillow>=10",
+  "pdf2image>=1.17",
+  "sqlalchemy>=2.0",
+  "pyyaml>=6",
+]
+
+[project.optional-dependencies]
+mssql = ["pyodbc>=5"]
+dev = ["pytest>=8"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

@@ -1,0 +1,12 @@
+.env
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+.venv/
+# Generated data is reproducible from the seed; regenerate instead of committing.
+data/raw/
+data/clean/
+data/curated/
+data/answer_key/
+*.db

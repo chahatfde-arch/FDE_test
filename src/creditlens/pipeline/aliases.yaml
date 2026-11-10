@@ -1,0 +1,21 @@
+# Counterparty abbreviations seen in bank narrations.
+# Maintained by the data team: when a new abbreviation shows up, add it here.
+abbreviations:
+  AMZN: AMAZON
+  RTL: RETAIL
+  ENTP: ENTERPRISES
+  TRDRS: TRADERS
+  PWR: POWER
+  INDS: INDUSTRIES
+  LOGI: LOGISTICS
+  SVCS: SERVICES
+  MFG: MANUFACTURING
+  DISTR: DISTRIBUTORS
+
+# Legal and geographic suffixes stripped from the end of names before matching.
+strip_suffixes:
+  - PRIVATE LIMITED
+  - PVT LTD
+  - LIMITED
+  - LTD
+  - INDIA

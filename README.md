@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # CreditLens AI
 
 CreditLens AI turns a small-business loan application into a draft credit memo for Kestrel Finance, a fictional lender. A human underwriter makes every final decision. All data is synthetic and every tool used is free.
@@ -93,3 +94,6 @@ notebooks/            Colab notebooks, one per milestone
 infra/                docker-compose.yml
 .github/workflows/    CI runs the tests on every push
 ```
+=======
+# FDE_test
+>>>>>>> 25e17e14aa65d7629e7c91540cb3ef1e3d33b666
